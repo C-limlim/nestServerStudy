@@ -1,6 +1,6 @@
 import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
-import { Repository } from 'typeorm';
+import { ObjectID, Repository } from 'typeorm';
 import { Potato } from './entities/potatoes';
 
 @Injectable()
@@ -16,5 +16,13 @@ export class AppService {
 
   append(information: Potato) {
     this.usersRepository.insert(information);
+  }
+
+  findID(id) {
+    return this.usersRepository.findByIds(id);
+  }
+
+  deleteID(id) {
+    this.usersRepository.delete(id);
   }
 }

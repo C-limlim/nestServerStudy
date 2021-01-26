@@ -17,4 +17,10 @@ export class Potato {
   @Column({ default: true })
   isSold: boolean;
 
+  @Column("timestamp")
+  updatedAt: Date;
+
+  @Column("timestamp")
+  createdAt: Date;
+
 }

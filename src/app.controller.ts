@@ -1,4 +1,5 @@
-import { Body, Controller, Get, Param, Post, Query } from '@nestjs/common';
+import { Body, Controller, Get, Param, Post, Delete, Patch } from '@nestjs/common';
+import { timeStamp } from 'console';
 import { identity } from 'rxjs';
 import { AppService } from './app.service';
 import { Potato } from './entities/potatoes';
@@ -15,5 +16,15 @@ export class AppController {
   @Post('/insert')
   insert(@Body() information: Potato) {
     this.appService.append(information);
+  }
+
+  @Get('/:id')
+  findID(@Param('id') id:string) {
+    return this.appService.findID(id);
+  }
+
+  @Delete('/:id')
+  deleteID(@Param('id') id:string) {
+    this.appService.deleteID(id);
   }
 }
