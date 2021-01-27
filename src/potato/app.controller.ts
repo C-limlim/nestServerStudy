@@ -2,9 +2,10 @@ import { Body, Controller, Get, Param, Post, Delete, Patch } from '@nestjs/commo
 import { timeStamp } from 'console';
 import { identity } from 'rxjs';
 import { AppService } from './app.service';
-import { Potato } from './entities/potatoes';
+import { question } from '../entities/question.entity';
+import { Potato } from '../entities/potatoes.entity';
 
-@Controller()
+@Controller('potatos')
 export class AppController {
   constructor(private readonly appService: AppService) {}
 

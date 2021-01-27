@@ -6,21 +6,18 @@ export class Potato {
   id: string;
 
   @Column()
-  grade: string;
+  context: string;
 
   @Column()
   price: string;
 
   @Column()
-  name: string;
-
-  @Column({ default: true })
-  isSold: boolean;
+  randomcode: string;
 
   @Column("timestamp")
-  updatedAt: Date;
+  reportedAt: Date;
 
-  @Column("timestamp")
-  createdAt: Date;
+  @Column()
+  ip: string;
 
 }
