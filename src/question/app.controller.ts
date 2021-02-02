@@ -23,4 +23,13 @@ export class AppController {
     return this.appService.deleteByID(id);
   }
 
+  @Get('/question')
+  pickOneRandom() {
+    return this.appService.pickOneRandom();
+  }
+
+  @Get('/:id')
+  async findById(@Param() id: string) {
+    return await this.appService.findById(id);
+  }
 }

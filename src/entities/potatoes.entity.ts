@@ -9,13 +9,10 @@ export class Potato {
   context: string;
 
   @Column()
-  price: string;
-
-  @Column()
   randomcode: string;
 
-  @Column("timestamp")
-  reportedAt: Date;
+  @Column({default: "reported"})
+  status: string;
 
   @Column()
   ip: string;

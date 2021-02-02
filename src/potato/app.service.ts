@@ -4,25 +4,25 @@ import { Repository } from 'typeorm';
 import { Potato } from '../entities/potatoes.entity';
 
 @Injectable()
-export class AppService {
+export class PotatoService {
   constructor(
     @InjectRepository(Potato)
     private usersRepository: Repository<Potato>,
   ) {}
 
+  addNewReport(report: Potato) {
+   this.usersRepository.insert(report)
+  }
+
   findAll() {
-    return this.usersRepository.find();
+    return this.usersRepository.find()
   }
 
-  append(information: Potato) {
-    this.usersRepository.insert(information);
+  async findByStatus(status: string) {
+    return (await this.usersRepository.find()).filter((value) => value.status === status)
   }
 
-  findID(id) {
-    return this.usersRepository.findByIds(id);
-  }
-
-  deleteID(id) {
-    this.usersRepository.delete(id);
+  async patchStatus(id: string, status: string) {
+    await this.usersRepository.update(id, {"status": status})
   }
 }

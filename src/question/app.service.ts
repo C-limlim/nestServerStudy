@@ -18,9 +18,19 @@ export class AppService {
     return this.usersRepository.find();
   }
 
+  async findById(Id: string) {
+    return await this.usersRepository.findOne({id:Id});
+  }
+
   deleteByID(id: string) {
     this.usersRepository.delete(id);
   } 
 
+  async pickOneRandom() {
+    const totalNum= await this.usersRepository.count()
+    const index :string = Math.floor(Math.random() * totalNum)+ 1 + ""
+    return this.usersRepository.find({id: index})
 
+  }
+  
 }
